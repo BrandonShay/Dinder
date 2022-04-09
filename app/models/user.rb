@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :validatable
   include DeviseTokenAuth::Concerns::User
 
-  
+  has_many :foods, dependent: :destroy 
+  # has_many :allergies
+  # has_many :mealbuds
   
 end

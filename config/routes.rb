@@ -4,4 +4,11 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-end
+
+  namespace :api do
+    resources :foods 
+    put '/switchOwner', to: 'foods#switchOwner'
+    end
+    get '/foods/randomFoods', to: 'foods#randomFoods'
+  end
+
