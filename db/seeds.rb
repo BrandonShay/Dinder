@@ -7,12 +7,12 @@
 #   Character.create(name: "Luke", movie: movies.first)
 i = 1
 
-5.times do
+1.times do
   @user = User.create(
-    email: "test#{i}@email.com",
+    email: "brandon1@email.com",
     password: 'password',
-    fname: "test#{i}",
-    lname: "testing#{i}",
+    fname: "Brandon",
+    lname: "s",
     image: "https://unsplash.com/photos/IF9TK5Uy-KI"
   )
   i += 1

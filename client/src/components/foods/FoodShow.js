@@ -41,9 +41,9 @@ const FoodShow = ({ id, food_name, food_type, image, deleteFood }) => {
                 >
                   Delete
                 </Button>
-                <Link to={`/foods/${id}/notes`}>
-                  Notes
-                </Link>
+                {/* <Link to={`/foods/${id}/notes`}>
+                  Notes */}
+                {/* </Link> */}
               </Col>
               <Col>
                 <img src={image} alt='image' width='100%' />

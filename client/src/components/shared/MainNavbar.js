@@ -14,6 +14,11 @@ const MainNavbar = ({ user, handleLogout }) => {
               Foods
             </li>
           </Link> 
+          <Link to='/dinners'>
+            <li>
+              Dinners
+            </li>
+          </Link> 
           <Nav.Link onClick={() => handleLogout()}>
             Logout
           </Nav.Link>

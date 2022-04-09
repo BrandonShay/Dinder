@@ -8,6 +8,9 @@ import Nomatch from './components/shared/Nomatch';
 import FetchUser from './components/auth/FetchUser';
 import Foods from './components/foods/Foods';
 import ProtectedRoute from './components/auth/ProtectedRoute';
+import FoodForm from './components/foods/FoodForm';
+import DinnerForm from './components/dinners/DinnerForm';
+import Dinners from './components/dinners/Dinners'
 
 const App = () => (
   <>
@@ -17,7 +20,10 @@ const App = () => (
         <Routes>
           <Route path='/' element={ <Home /> } />
           <Route path='/' element={ <ProtectedRoute />}>
-           <Route path='/foods' element= { <foods />}/>
+           <Route path='/foods' element= { <Foods />}/>
+           <Route path='/foods/:foodId/edit' element={ <FoodForm /> } />
+           <Route path='/dinners' element= { <Dinners />}/>
+           <Route path='/foods/:foodId/dinners/edit' element={ <DinnerForm /> } />
           </Route>
           <Route path='/login' element={ <Login /> } />
           <Route path='/register' element={ <Register /> } />

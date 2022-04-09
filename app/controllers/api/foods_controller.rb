@@ -1,8 +1,9 @@
-class Api::CatsController < ApplicationController
+class Api::FoodsController < ApplicationController
+  before_action :set_user
   before_action :set_food, only: [:show, :update, :destroy, :switchOwner ]
   
   def index
-    render json: current_user.foods
+    render json: @current_user.foods
   end
 
   def show
@@ -10,7 +11,7 @@ class Api::CatsController < ApplicationController
   end
 
   def create
-    @food = current_user.foods.new(food_params)
+    @food = @current_user.foods.new(food_params)
     if @food.save
       render json: @food
     else
@@ -32,12 +33,12 @@ class Api::CatsController < ApplicationController
   end
 
   def randomFoods
-    @foods = Food.all - current_user.foods
+    @foods = Food.all - @current_user.foods
     render json: @foods
   end
 
   def switchOwner
-    @food.user_id = current_user.id
+    @food.user_id = @current_user.id
     if @food.save
       render json: @food
     else
@@ -48,7 +49,10 @@ class Api::CatsController < ApplicationController
   private 
 
     def set_food
-      @food = current_user.foods.find(params[:id])
+      @food = @current_user.foods.find(params[:id])
+    end
+    def set_user
+      @current_user = User.find(params[:user_id])    
     end
 
     def food_params

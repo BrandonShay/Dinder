@@ -2,6 +2,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 import FoodShow from './FoodShow';
 import { FoodConsumer } from '../../providers/FoodProvider';
 import { useEffect } from 'react';
+import FoodForm from './FoodForm'
 
 const FoodList = ({ foods, getAllFoods }) => {
   
@@ -12,6 +13,7 @@ const FoodList = ({ foods, getAllFoods }) => {
   return ( 
     <>
       <h1>My Foods</h1>
+      {/* <FoodForm /> */}
       <Container>
         <Row md={4}>
           { foods.map( f => 
