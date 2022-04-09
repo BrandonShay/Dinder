@@ -6,6 +6,7 @@ import Home from './components/shared/Home';
 import MainNavbar from './components/shared/MainNavbar';
 import Nomatch from './components/shared/Nomatch';
 import FetchUser from './components/auth/FetchUser';
+import Foods from './components/foods/Foods';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 
 const App = () => (
@@ -16,7 +17,7 @@ const App = () => (
         <Routes>
           <Route path='/' element={ <Home /> } />
           <Route path='/' element={ <ProtectedRoute />}>
-            {/* Your Protected routes go here */}
+           <Route path='/foods' element= { <foods />}/>
           </Route>
           <Route path='/login' element={ <Login /> } />
           <Route path='/register' element={ <Register /> } />

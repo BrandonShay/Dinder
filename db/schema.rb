@@ -10,9 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_08_181159) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_09_170446) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "dinners", force: :cascade do |t|
+    t.text "ingredients"
+    t.text "recipe"
+    t.string "difficulty"
+    t.string "cook_time"
+    t.string "image"
+    t.string "servings"
+    t.bigint "food_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["food_id"], name: "index_dinners_on_food_id"
+  end
+
+  create_table "foods", force: :cascade do |t|
+    t.string "food_name"
+    t.string "food_type"
+    t.string "image"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_foods_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "provider", default: "email", null: false
@@ -38,10 +61,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_08_181159) do
     t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
+    t.string "fname"
+    t.string "lname"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
+  add_foreign_key "dinners", "foods"
+  add_foreign_key "foods", "users"
 end
